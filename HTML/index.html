@@ -51,7 +51,19 @@
         <a href="#vocacional" class="btn-outline">Fazer teste vocacional</a>
       </div>
     </div>
+    <!-- A bussola segue o mouse, também tirei as letras de orientação -->
     <div class="flex justify-center items-center order-first md:order-none">
+  <svg id="compass" class="w-[220px] h-[220px]" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="110" cy="110" r="95" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+    <circle cx="110" cy="110" r="70" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+    <g id="needle" class="compass-needle" style="transform-origin: 110px 110px;">
+      <polygon points="110,45 120,110 110,120 100,110" fill="#e8a13d"/>
+      <polygon points="110,175 120,110 110,100 100,110" fill="#f4f4f0"/>
+    </g>
+    <circle cx="110" cy="110" r="8" fill="#0b4a2e" stroke="#fff" stroke-width="2"/>
+  </svg>
+</div>
+    <!-- <div class="flex justify-center items-center order-first md:order-none">
       <svg class="w-[220px] h-[220px]" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="110" cy="110" r="95" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
         <circle cx="110" cy="110" r="70" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
@@ -65,7 +77,7 @@
         </g>
         <circle cx="110" cy="110" r="8" fill="#0b4a2e" stroke="#fff" stroke-width="2"/>
       </svg>
-    </div>
+    </div> -->
   </div>
 </section>
 
@@ -181,5 +193,6 @@
 <!-- Seus arquivos JS ficam em ../js/ -->
 <script src="../js/quizzes.js"></script>
 <script src="../js/vocacional.js"></script>
+<script src="../js/bussola.js"></script>
 </body>
 </html>
