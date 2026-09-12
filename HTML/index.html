@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feira de Profissões — IFSP Campus Caraguatatuba</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- CSS gerado pelo Tailwind CLI (src/input.css -> dist/output.css) -->
+<link rel="stylesheet" href="../dist/output.css">
+</head>
+<body class="bg-ifsp-bg text-ifsp-texto leading-relaxed">
+
+<div class="bg-ifsp-escuro text-[#d9ead9] text-[0.78rem]">
+  <div class="max-w-[1140px] mx-auto px-6 flex justify-between items-center gap-3 flex-wrap py-1.5">
+    <span class="opacity-85">Instituto Federal de Educação, Ciência e Tecnologia de São Paulo · Câmpus Caraguatatuba</span>
+    <span class="bg-ifsp-dourado text-[#3a2a05] font-bold px-2.5 py-0.5 rounded-full text-[0.72rem] tracking-wide">Feira de Profissões</span>
+  </div>
+</div>
+
+<header class="bg-white border-b border-ifsp-borda">
+  <div class="max-w-[1140px] mx-auto px-6 flex items-center gap-4 py-[1.125rem]">
+    <div class="w-[54px] h-[54px] rounded-xl bg-ifsp-escuro flex items-center justify-center text-white font-extrabold text-[1.05rem] tracking-wide flex-shrink-0">IFSP</div>
+    <div>
+      <h1 class="m-0 text-lg font-extrabold text-ifsp-escuro">Feira de Profissões — Caraguatatuba</h1>
+      <p class="mt-0.5 mb-0 text-sm text-ifsp-textoSuave">Quizzes de humanas e teste vocacional para o seu dia de visita</p>
+    </div>
+  </div>
+</header>
+
+<nav class="bg-ifsp-verde">
+  <div class="max-w-[1140px] mx-auto px-6">
+    <ul class="list-none flex gap-1 m-0 p-0 flex-wrap">
+      <li><a href="#inicio" class="block text-white no-underline font-semibold text-[0.92rem] px-[1.125rem] py-3.5 border-b-[3px] border-transparent hover:border-ifsp-dourado hover:bg-white/5">Início</a></li>
+      <li><a href="#quizzes" class="block text-white no-underline font-semibold text-[0.92rem] px-[1.125rem] py-3.5 border-b-[3px] border-transparent hover:border-ifsp-dourado hover:bg-white/5">Quizzes</a></li>
+      <li><a href="#vocacional" class="block text-white no-underline font-semibold text-[0.92rem] px-[1.125rem] py-3.5 border-b-[3px] border-transparent hover:border-ifsp-dourado hover:bg-white/5">Teste Vocacional</a></li>
+      <li><a href="#cursos" class="block text-white no-underline font-semibold text-[0.92rem] px-[1.125rem] py-3.5 border-b-[3px] border-transparent hover:border-ifsp-dourado hover:bg-white/5">Cursos do Câmpus</a></li>
+      <li><a href="cursos-profissoes.html" class="block text-white no-underline font-semibold text-[0.92rem] px-[1.125rem] py-3.5 border-b-[3px] border-transparent hover:border-ifsp-dourado hover:bg-white/5">Cursos e Profissões</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="bg-gradient-to-br from-ifsp-escuro to-ifsp-verde text-white py-16 md:py-20 pb-16 md:pb-[76px] relative overflow-hidden" id="inicio">
+  <div class="max-w-[1140px] mx-auto px-6 grid grid-cols-1 md:grid-cols-[1.15fr_0.85fr] gap-10 items-center">
+    <div>
+      <span class="inline-block bg-white/15 px-3.5 py-1.5 rounded-full text-sm font-semibold mb-[1.125rem] border border-white/25">Estande interativo</span>
+      <h2 class="text-4xl leading-tight m-0 mb-4 font-extrabold">Teste o que você sabe. Descubra para onde ir.</h2>
+      <p class="text-lg text-[#dcece2] max-w-[46ch] m-0 mb-[1.875rem]">Responda quizzes rápidos de humanas e, ao final, faça o teste vocacional para ver qual área do IFSP Caraguatatuba combina mais com você.</p>
+      <div class="flex gap-3.5 flex-wrap">
+        <a href="#quizzes" class="btn-gold">Ver quizzes</a>
+        <a href="#vocacional" class="btn-outline">Fazer teste vocacional</a>
+      </div>
+    </div>
+    <!-- A bussola segue o mouse, também tirei as letras de orientação -->
+    <div class="flex justify-center items-center order-first md:order-none">
+  <svg id="compass" class="w-[220px] h-[220px]" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="110" cy="110" r="95" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+    <circle cx="110" cy="110" r="70" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+    <g id="needle" class="compass-needle" style="transform-origin: 110px 110px;">
+      <polygon points="110,45 120,110 110,120 100,110" fill="#e8a13d"/>
+      <polygon points="110,175 120,110 110,100 100,110" fill="#f4f4f0"/>
+    </g>
+    <circle cx="110" cy="110" r="8" fill="#0b4a2e" stroke="#fff" stroke-width="2"/>
+  </svg>
+</div>
+    <!-- <div class="flex justify-center items-center order-first md:order-none">
+      <svg class="w-[220px] h-[220px]" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="110" cy="110" r="95" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+        <circle cx="110" cy="110" r="70" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+        <text x="110" y="30" fill="#e8a13d" font-size="14" font-weight="700" text-anchor="middle">N</text>
+        <text x="110" y="200" fill="#dcece2" font-size="14" text-anchor="middle">S</text>
+        <text x="18" y="115" fill="#dcece2" font-size="14" text-anchor="middle">O</text>
+        <text x="202" y="115" fill="#dcece2" font-size="14" text-anchor="middle">L</text>
+        <g class="compass-needle animate-findPath">
+          <polygon points="110,45 120,110 110,120 100,110" fill="#e8a13d"/>
+          <polygon points="110,175 120,110 110,100 100,110" fill="#f4f4f0"/>
+        </g>
+        <circle cx="110" cy="110" r="8" fill="#0b4a2e" stroke="#fff" stroke-width="2"/>
+      </svg>
+    </div> -->
+  </div>
+</section>
+
+<section class="py-16" id="quizzes">
+  <div class="max-w-[1140px] mx-auto px-6">
+    <div class="max-w-[640px] m-0 mb-9">
+      <p class="text-ifsp-verde font-bold text-sm m-0 mb-1.5">CIÊNCIAS HUMANAS</p>
+      <h3 class="text-3xl m-0 mb-2.5 text-ifsp-escuro">Escolha um quiz para começar</h3>
+      <p class="text-ifsp-textoSuave m-0">Cada quiz tem 5 perguntas com feedback na hora. Erre, acerte e aprenda algo novo antes de seguir para o próximo estande.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[1.375rem]" id="quizGrid"></div>
+  </div>
+</section>
+
+<section class="py-16" id="vocacional">
+  <div class="max-w-[1140px] mx-auto px-6">
+    <div class="bg-ifsp-escuro rounded-[20px] text-white p-7 md:p-11 grid grid-cols-1 md:grid-cols-[1.3fr_0.7fr] gap-8 items-center">
+      <div>
+        <h3 class="m-0 mb-3 text-3xl">Teste vocacional rápido</h3>
+        <p class="m-0 mb-[1.375rem] text-[#d9ead9] max-w-[52ch]">30 perguntas de situações do dia a dia. No final, você vê qual área de interesse combina mais com o seu jeito.</p>
+        <div class="flex gap-[1.625rem] flex-wrap">
+          <div class="bg-white/8 rounded-xl px-[1.125rem] py-3.5 min-w-[120px]"><strong class="block text-xl">30</strong><span class="text-xs text-[#c8ddcf]">perguntas</span></div>
+          <div class="bg-white/8 rounded-xl px-[1.125rem] py-3.5 min-w-[120px]"><strong class="block text-xl">~8 min</strong><span class="text-xs text-[#c8ddcf]">duração</span></div>
+          <div class="bg-white/8 rounded-xl px-[1.125rem] py-3.5 min-w-[120px]"><strong class="block text-xl">6</strong><span class="text-xs text-[#c8ddcf]">áreas de interesse</span></div>
+        </div>
+        <div class="flex gap-3.5 flex-wrap mt-[1.375rem]">
+          <button class="btn-gold" id="btnStartVoc">Iniciar teste vocacional</button>
+        </div>
+      </div>
+      <div class="bg-white/6 border border-dashed border-white/30 rounded-2xl p-[1.375rem] text-center">
+        <svg class="mx-auto mb-3" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#e8a13d" stroke-width="1.6">
+          <path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="4" stroke="#fff"/>
+        </svg>
+        <p class="text-[#dcece2] text-sm m-0">Sem cadastro. Sem certo ou errado — só autoconhecimento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16" id="cursos">
+  <div class="max-w-[1140px] mx-auto px-6">
+    <div class="max-w-[640px] m-0 mb-9">
+      <p class="text-ifsp-verde font-bold text-sm m-0 mb-1.5">OFERTA DO CÂMPUS</p>
+      <h3 class="text-3xl m-0 mb-2.5 text-ifsp-escuro">Cursos do IFSP Caraguatatuba</h3>
+      <p class="text-ifsp-textoSuave m-0">Estes são os cursos oferecidos hoje pelo câmpus — o teste vocacional aponta pra eles conforme suas respostas.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <div class="bg-white border border-ifsp-borda rounded-xl overflow-hidden flex transition-transform duration-200 hover:-translate-y-0.5">
+        <div class="w-9 flex-shrink-0 flex items-center justify-center bg-ifsp-verde text-white text-[0.65rem] font-bold tracking-widest [writing-mode:vertical-rl] [text-orientation:mixed] py-2">ADM</div>
+        <div class="px-[1.125rem] py-4 text-sm"><span class="block text-xs font-bold text-ifsp-verde uppercase tracking-wide mb-1.5">Técnico</span>Administração</div>
+      </div>
+
+      <div class="bg-white border border-ifsp-borda rounded-xl overflow-hidden flex transition-transform duration-200 hover:-translate-y-0.5">
+        <div class="w-9 flex-shrink-0 flex items-center justify-center bg-ifsp-verde text-white text-[0.65rem] font-bold tracking-widest [writing-mode:vertical-rl] [text-orientation:mixed] py-2">EDF</div>
+        <div class="px-[1.125rem] py-4 text-sm"><span class="block text-xs font-bold text-ifsp-verde uppercase tracking-wide mb-1.5">Técnico</span>Edificações</div>
+      </div>
+
+      <div class="bg-white border border-ifsp-borda rounded-xl overflow-hidden flex transition-transform duration-200 hover:-translate-y-0.5">
+        <div class="w-9 flex-shrink-0 flex items-center justify-center bg-ifsp-escuro text-white text-[0.65rem] font-bold tracking-widest [writing-mode:vertical-rl] [text-orientation:mixed] py-2">INF</div>
+        <div class="px-[1.125rem] py-4 text-sm"><span class="block text-xs font-bold text-ifsp-verde uppercase tracking-wide mb-1.5">Técnico integrado</span>Informática</div>
+      </div>
+
+      <div class="bg-white border border-ifsp-borda rounded-xl overflow-hidden flex transition-transform duration-200 hover:-translate-y-0.5">
+        <div class="w-9 flex-shrink-0 flex items-center justify-center bg-ifsp-verde text-white text-[0.65rem] font-bold tracking-widest [writing-mode:vertical-rl] [text-orientation:mixed] py-2">INT</div>
+        <div class="px-[1.125rem] py-4 text-sm"><span class="block text-xs font-bold text-ifsp-verde uppercase tracking-wide mb-1.5">Técnico</span>Informática para Internet</div>
+      </div>
+
+      <div class="bg-white border border-ifsp-borda rounded-xl overflow-hidden flex transition-transform duration-200 hover:-translate-y-0.5">
+        <div class="w-9 flex-shrink-0 flex items-center justify-center bg-ifsp-verde text-white text-[0.65rem] font-bold tracking-widest [writing-mode:vertical-rl] [text-orientation:mixed] py-2">AMB</div>
+        <div class="px-[1.125rem] py-4 text-sm"><span class="block text-xs font-bold text-ifsp-verde uppercase tracking-wide mb-1.5">Técnico</span>Meio Ambiente</div>
+      </div>
+
+      <div class="bg-white border border-ifsp-borda rounded-xl overflow-hidden flex transition-transform duration-200 hover:-translate-y-0.5">
+        <div class="w-9 flex-shrink-0 flex items-center justify-center bg-ifsp-dourado text-[#3a2a05] text-[0.65rem] font-bold tracking-widest [writing-mode:vertical-rl] [text-orientation:mixed] py-2">ECV</div>
+        <div class="px-[1.125rem] py-4 text-sm"><span class="block text-xs font-bold text-ifsp-verde uppercase tracking-wide mb-1.5">Graduação</span>Engenharia Civil (Bacharelado)</div>
+      </div>
+
+      <div class="bg-white border border-ifsp-borda rounded-xl overflow-hidden flex transition-transform duration-200 hover:-translate-y-0.5">
+        <div class="w-9 flex-shrink-0 flex items-center justify-center bg-ifsp-dourado text-[#3a2a05] text-[0.65rem] font-bold tracking-widest [writing-mode:vertical-rl] [text-orientation:mixed] py-2">ADS</div>
+        <div class="px-[1.125rem] py-4 text-sm"><span class="block text-xs font-bold text-ifsp-verde uppercase tracking-wide mb-1.5">Graduação</span>Análise e Desenvolvimento de Sistemas</div>
+      </div>
+
+      <div class="bg-white border border-ifsp-borda rounded-xl overflow-hidden flex transition-transform duration-200 hover:-translate-y-0.5">
+        <div class="w-9 flex-shrink-0 flex items-center justify-center bg-ifsp-dourado text-[#3a2a05] text-[0.65rem] font-bold tracking-widest [writing-mode:vertical-rl] [text-orientation:mixed] py-2">FIS</div>
+        <div class="px-[1.125rem] py-4 text-sm"><span class="block text-xs font-bold text-ifsp-verde uppercase tracking-wide mb-1.5">Graduação</span>Licenciatura em Física</div>
+      </div>
+
+      <div class="bg-white border border-ifsp-borda rounded-xl overflow-hidden flex transition-transform duration-200 hover:-translate-y-0.5">
+        <div class="w-9 flex-shrink-0 flex items-center justify-center bg-ifsp-dourado text-[#3a2a05] text-[0.65rem] font-bold tracking-widest [writing-mode:vertical-rl] [text-orientation:mixed] py-2">MAT</div>
+        <div class="px-[1.125rem] py-4 text-sm"><span class="block text-xs font-bold text-ifsp-verde uppercase tracking-wide mb-1.5">Graduação</span>Licenciatura em Matemática</div>
+      </div>
+
+      <div class="bg-white border border-ifsp-borda rounded-xl overflow-hidden flex transition-transform duration-200 hover:-translate-y-0.5">
+        <div class="w-9 flex-shrink-0 flex items-center justify-center bg-ifsp-dourado text-[#3a2a05] text-[0.65rem] font-bold tracking-widest [writing-mode:vertical-rl] [text-orientation:mixed] py-2">PGE</div>
+        <div class="px-[1.125rem] py-4 text-sm"><span class="block text-xs font-bold text-ifsp-verde uppercase tracking-wide mb-1.5">Graduação</span>Processos Gerenciais</div>
+      </div>
+
+    </div>
+
+    <div class="mt-8">
+      <a href="cursos-profissoes.html" class="btn-outline bg-ifsp-escuro">Ver profissões relacionadas a cada curso</a>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-ifsp-escuro text-[#cfe3d6] pt-11 pb-6 text-sm">
+  <div class="max-w-[1140px] mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-7 mb-7">
+      <div>
+        <h5 class="text-white m-0 mb-3 text-[0.95rem]">IFSP Câmpus Caraguatatuba</h5>
+        <p class="m-0 max-w-[40ch]">Avenida Bahia, 1739 — Indaiá, Caraguatatuba/SP · CEP 11665-071</p>
+      </div>
+      <div>
+        <h5 class="text-white m-0 mb-3 text-[0.95rem]">Contato</h5>
+        <ul class="list-none m-0 p-0">
+          <li class="mb-2">(12) 3885-2130</li>
+          <li class="mb-2">ifspcaraguatatuba.edu.br</li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="text-white m-0 mb-3 text-[0.95rem]">Nesta feira</h5>
+        <ul class="list-none m-0 p-0">
+          <li class="mb-2"><a href="#quizzes">Quizzes de humanas</a></li>
+          <li class="mb-2"><a href="#vocacional">Teste vocacional</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="border-t border-white/15 pt-[1.125rem] text-xs text-[#a9c4b3] leading-relaxed m-0">Este site é um protótipo educacional criado para uma feira de profissões, inspirado na identidade visual do site do IFSP Câmpus Caraguatatuba. Não é o site oficial do IFSP — para informações institucionais reais, acesse ifspcaraguatatuba.edu.br.</p>
+  </div>
+</footer>
+
+<!-- OVERLAY: QUIZ -->
+<div class="overlay fixed inset-0 bg-[#0b1e14]/55 items-center justify-center p-6 z-[100]" id="quizOverlay">
+  <div class="bg-white rounded-[18px] max-w-[640px] w-full max-h-[88vh] overflow-y-auto shadow-2xl">
+    <div class="flex items-center justify-between px-6 py-[1.125rem] border-b border-ifsp-borda sticky top-0 bg-white">
+      <h4 class="m-0 text-base text-ifsp-escuro" id="quizModalTitle">Quiz</h4>
+      <button class="bg-transparent border-none text-xl leading-none text-ifsp-textoSuave px-2 py-1 rounded-lg hover:bg-ifsp-suave" id="closeQuiz" aria-label="Fechar">✕</button>
+    </div>
+    <div class="h-1.5 bg-ifsp-suave"><div class="h-full bg-ifsp-verde w-0 transition-all duration-300" id="quizProgress"></div></div>
+    <div class="p-[1.625rem]" id="quizBody"></div>
+  </div>
+</div>
+
+<!-- OVERLAY: TESTE VOCACIONAL -->
+<div class="overlay fixed inset-0 bg-[#0b1e14]/55 items-center justify-center p-6 z-[100]" id="vocOverlay">
+  <div class="bg-white rounded-[18px] max-w-[640px] w-full max-h-[88vh] overflow-y-auto shadow-2xl">
+    <div class="flex items-center justify-between px-6 py-[1.125rem] border-b border-ifsp-borda sticky top-0 bg-white">
+      <h4 class="m-0 text-base text-ifsp-escuro">Teste Vocacional</h4>
+      <button class="bg-transparent border-none text-xl leading-none text-ifsp-textoSuave px-2 py-1 rounded-lg hover:bg-ifsp-suave" id="closeVoc" aria-label="Fechar">✕</button>
+    </div>
+    <div class="h-1.5 bg-ifsp-suave"><div class="h-full bg-ifsp-verde w-0 transition-all duration-300" id="vocProgress"></div></div>
+    <div class="p-[1.625rem]" id="vocBody"></div>
+  </div>
+</div>
+
+<!-- Seus arquivos JS ficam em ../js/ -->
+<script src="../js/quizzes.js"></script>
+<script src="../js/vocacional.js"></script>
+<script src="../js/bussola.js"></script>
+</body>
+</html>
