@@ -1,1 +1,92 @@
-@import 'tailwindcss'
+@import "tailwindcss";
+
+/* No Tailwind v4 a detecção de conteúdo já é automática a partir da raiz
+   do projeto, mas como html/ e js/ não ficam "dentro" de src/, declaramos
+   explicitamente pra garantir que o CLI escaneie essas pastas. */
+@source "../html";
+@source "../js";
+
+@theme {
+  --font-sans: 'Public Sans', -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --color-ifsp-escuro: #0b4a2e;
+  --color-ifsp-verde: #1c7a4a;
+  --color-ifsp-suave: #e7f3ec;
+  --color-ifsp-dourado: #e8a13d;
+  --color-ifsp-bg: #f6f7f2;
+  --color-ifsp-texto: #17251d;
+  --color-ifsp-textoSuave: #51625a;
+  --color-ifsp-borda: #dbe6de;
+  --color-ifsp-erro: #b3402f;
+
+  --shadow-card: 0 8px 24px rgba(11,74,46,0.10);
+
+  --animate-findPath: findPath 2.4s cubic-bezier(.4,0,.2,1) 1;
+  @keyframes findPath {
+    0% { transform: rotate(-140deg); }
+    60% { transform: rotate(35deg); }
+    80% { transform: rotate(-8deg); }
+    100% { transform: rotate(0deg); }
+  }
+}
+
+/* Estilos que dependem de classes adicionadas/removidas via JS
+   (o Tailwind por si só não cobre bem estados dinâmicos como estes) */
+body {
+  font-family: 'Public Sans', -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .compass-needle { transform-origin: 110px 110px; }
+}
+
+.overlay { display: none; }
+.overlay.open { display: flex; }
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-3 rounded-[10px] font-bold text-sm bg-ifsp-escuro text-white transition active:scale-[0.97];
+  }
+  .btn-primary:hover { background: #0e5c39; }
+
+  .btn-gold {
+    @apply inline-flex items-center gap-2 px-5 py-3 rounded-[10px] font-bold text-sm bg-ifsp-dourado text-[#3a2a05] transition active:scale-[0.97];
+  }
+  .btn-gold:hover { background: #f0ae52; }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-5 py-3 rounded-[10px] font-bold text-sm border-2 border-white/55 text-white bg-transparent transition active:scale-[0.97];
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.12); }
+
+  .btn-outline-light {
+    @apply inline-flex items-center gap-2 px-5 py-3 rounded-[10px] font-bold text-sm border-[1.5px] border-ifsp-borda text-ifsp-escuro bg-white transition active:scale-[0.97];
+  }
+  .btn-outline-light:hover { background: #e7f3ec; }
+
+  .option-btn {
+    @apply text-left px-4 py-3.5 rounded-[10px] border-[1.5px] border-ifsp-borda bg-white text-[0.96rem] flex gap-2.5 items-start w-full;
+  }
+  .option-btn:hover:not(:disabled) { border-color: #1c7a4a; }
+  .option-btn:disabled { cursor: default; }
+  .option-btn.correct { border-color: #1c7a4a; background: #e7f3ec; }
+  .option-btn.wrong { border-color: #b3402f; background: #fbeae7; }
+
+  .option-letter {
+    @apply flex-shrink-0 w-[1.625rem] h-[1.625rem] rounded-full bg-ifsp-suave text-ifsp-escuro font-bold text-xs flex items-center justify-center;
+  }
+
+  .feedback {
+    @apply mt-4 px-4 py-3.5 rounded-[10px] text-sm bg-ifsp-suave;
+    color: #164a2e;
+  }
+  .feedback.wrong { background: #fbeae7; color: #7a2a1c; }
+
+  .bar-row { @apply flex items-center gap-3 mb-3.5; }
+  .bar-label { @apply w-[150px] text-sm font-semibold flex-shrink-0; }
+  .bar-track { @apply flex-1 h-3.5 bg-ifsp-suave rounded-full overflow-hidden; }
+  .bar-fill { @apply h-full bg-ifsp-verde rounded-full transition-all duration-500; width: 0%; }
+  .bar-pct { @apply w-10 text-right text-[0.82rem] text-ifsp-textoSuave flex-shrink-0; }
+  .bar-row.top .bar-fill { background: #e8a13d; }
+  .bar-row.top .bar-label { color: #0b4a2e; }
+}

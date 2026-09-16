@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz de História — Feira de Profissões</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/output.css">
+  <style>
+    .quiz-option {
+      transition: transform .15s ease, border-color .15s ease, background-color .15s ease;
+    }
+    .quiz-option:hover { transform: translateY(-1px); background-color: #88dfa72f; }
+    .quiz-option.selected {
+      border-color: #0b4a2e;
+      background: #f9fffb;
+    }
+    .quiz-option.correct {
+      border-color: #1eb64c;
+      background: #1eb64c84;
+    }
+    .quiz-option.wrong {
+      border-color: #f32337;
+      background: #f3233858;
+    }
+  </style>
+</head>
+
+<body class="bg-ifsp-bg text-ifsp-texto leading-relaxed">
+
+  <div class="bg-ifsp-escuro text-[#d9ead9] text-[0.78rem]">
+    <div class="max-w-[1140px] mx-auto px-6 flex justify-between items-center gap-3 flex-wrap py-1.5">
+      <span class="opacity-85">Instituto Federal de Educação, Ciência e Tecnologia de São Paulo · Câmpus Caraguatatuba</span>
+      <span class="bg-ifsp-dourado text-[#3a2a05] font-bold px-2.5 py-0.5 rounded-full text-[0.72rem] tracking-wide">Feira de Profissões</span>
+    </div>
+  </div>
+
+  <header class="bg-white border-b border-ifsp-borda">
+    <div class="max-w-[1140px] mx-auto px-6 flex items-center gap-4 py-[1.125rem]">
+      <a href="index.html" class="w-[54px] h-[54px] rounded-xl bg-ifsp-escuro flex items-center justify-center text-white font-extrabold text-[1.05rem] tracking-wide flex-shrink-0 no-underline">IFSP</a>
+      <div>
+        <h1 class="m-0 text-lg font-extrabold text-ifsp-escuro">Feira de Profissões — Caraguatatuba</h1>
+        <p class="mt-0.5 mb-0 text-sm text-ifsp-textoSuave">Quiz de História e Arqueologia</p>
+      </div>
+    </div>
+  </header>
+
+  <nav class="bg-ifsp-verde">
+    <div class="max-w-[1140px] mx-auto px-6">
+      <ul class="list-none flex gap-1 m-0 p-0 flex-wrap">
+        <li><a href="index.html#inicio" class="block text-white no-underline font-semibold text-[0.92rem] px-[1.125rem] py-3.5 border-b-[3px] border-transparent hover:border-ifsp-dourado hover:bg-white/5">Início</a></li>
+        <li><a href="index.html#quizzes" class="block text-white no-underline font-semibold text-[0.92rem] px-[1.125rem] py-3.5 border-b-[3px] border-transparent hover:border-ifsp-dourado hover:bg-white/5">Quizzes</a></li>
+        <li><a href="index.html#vocacional" class="block text-white no-underline font-semibold text-[0.92rem] px-[1.125rem] py-3.5 border-b-[3px] border-transparent hover:border-ifsp-dourado hover:bg-white/5">Teste Vocacional</a></li>
+        <li><a href="index.html#cursos" class="block text-white no-underline font-semibold text-[0.92rem] px-[1.125rem] py-3.5 border-b-[3px] border-transparent hover:border-ifsp-dourado hover:bg-white/5">Cursos do Câmpus</a></li>
+        <li><a href="cursos-profissoes.html" class="block text-white no-underline font-semibold text-[0.92rem] px-[1.125rem] py-3.5 border-b-[3px] border-transparent hover:border-ifsp-dourado hover:bg-white/5">Cursos e Profissões</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="py-12 md:py-16">
+    <div class="max-w-[820px] mx-auto px-6">
+
+      <div class="mb-8">
+        <a href="index.html#quizzes" class="inline-flex items-center gap-2 text-ifsp-verde font-bold text-sm no-underline hover:underline">← Voltar para os quizzes</a>
+      </div>
+
+      <br>
+
+      <section class="bg-gradient-to-br from-ifsp-escuro to-ifsp-verde text-white rounded-[20px] p-7 md:p-10 mb-7">
+        <span class="inline-block bg-white/15 px-3.5 py-1.5 rounded-full text-sm font-semibold mb-4 border border-white/25">CIÊNCIAS HUMANAS</span>
+        <h2 class="text-3xl md:text-4xl leading-tight m-0 mb-3 font-extrabold">Quiz de História e Arqueologia</h2>
+        <p class="text-[#dcece2] m-0 max-w-[60ch]">25 questões para testar seus conhecimentos. Escolha apenas uma alternativa em cada questão e veja seu resultado no final.</p>
+      </section>
+
+      <div class="bg-white border border-ifsp-borda rounded-[18px] shadow-sm p-5 md:p-7 mb-5">
+        <div class="flex justify-between items-center gap-4 mb-2">
+          <span id="progressText" class="text-sm font-bold text-ifsp-escuro">Questão 1 de 25</span>
+          <span id="progressPercent" class="text-sm font-bold text-ifsp-verde">4%</span>
+        </div>
+        <div class="h-2.5 bg-ifsp-suave rounded-full overflow-hidden">
+          <div id="progressBar" class="h-full bg-ifsp-verde rounded-full transition-all duration-300" style="width: 4%"></div>
+        </div>
+      </div>
+
+      <section id="quizArea"></section>
+
+      <section id="resultArea" class="hidden"></section>
+    </div>
+  </main>
+
+  <footer class="bg-ifsp-escuro text-[#cfe3d6] pt-11 pb-6 text-sm">
+    <div class="max-w-[1140px] mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-7 mb-7">
+        <div>
+          <h5 class="text-white m-0 mb-3 text-[0.95rem]">IFSP Câmpus Caraguatatuba</h5>
+          <p class="m-0 max-w-[40ch]">Avenida Bahia, 1739 — Indaiá, Caraguatatuba/SP · CEP 11665-071</p>
+        </div>
+        <div>
+          <h5 class="text-white m-0 mb-3 text-[0.95rem]">Nesta feira</h5>
+          <ul class="list-none m-0 p-0">
+            <li class="mb-2"><a href="index.html#quizzes" class="text-[#cfe3d6] no-underline hover:underline">Quizzes de humanas</a></li>
+            <li class="mb-2"><a href="index.html#vocacional" class="text-[#cfe3d6] no-underline hover:underline">Teste vocacional</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-white m-0 mb-3 text-[0.95rem]">Contato</h5>
+          <p class="m-0">ifspcaraguatatuba.edu.br</p>
+        </div>
+      </div>
+      <p class="border-t border-white/15 pt-[1.125rem] text-xs text-[#a9c4b3] leading-relaxed m-0">Este site é um protótipo educacional criado para uma feira de profissões, inspirado na identidade visual do site do IFSP Câmpus Caraguatatuba. Não é o site oficial do IFSP.</p>
+    </div>
+  </footer>
+
+<script>
+const questoes = [
+            {
+                id: 1,
+                titulo: "Civilização Romana",
+                pergunta: "A história política de Roma costuma ser dividida em três grandes períodos. Considerando a sequência cronológica e algumas de suas principais características, assinale a alternativa correta:",
+                alternativas: [
+                    "República → Monarquia → Império, período em que o poder do Senado foi progressivamente ampliado.",
+                    "Monarquia → República → Império, sendo a República marcada por conflitos sociais e expansão territorial.",
+                    "Império → República → Monarquia, com a queda do Império ocorrendo antes da criação da República.",
+                    "Monarquia → Império → República, sendo a República responsável pela formação inicial de Roma."
+                ],
+                correta: 1
+            },
+            {
+                id: 2,
+                titulo: "Grandes Navegações",
+                pergunta: "Durante os séculos XV e XVI, os reinos europeus passaram a financiar expedições marítimas de longa distância. Entre os fatores que contribuíram para esse processo, destaca-se:",
+                alternativas: [
+                    "A busca por novas rotas comerciais para alcançar mercados orientais, evitando intermediários e ampliando os lucros.",
+                    "O objetivo de abandonar completamente o comércio terrestre e substituir a agricultura pela navegação.",
+                    "A intenção de estabelecer exclusivamente colônias militares na África, sem interesses comerciais.",
+                    "A necessidade de impedir a circulação de moedas dentro dos territórios europeus."
+                ],
+                correta: 0
+            },
+            {
+                id: 3,
+                titulo: "Tratado de Tordesilhas",
+                pergunta: "O Tratado de Tordesilhas, assinado em 1494, estabeleceu uma linha imaginária para dividir áreas de conquista entre Portugal e Espanha. Uma consequência desse acordo para a formação territorial brasileira foi:",
+                alternativas: [
+                    "A determinação das atuais fronteiras do Brasil com todos os países sul-americanos.",
+                    "A possibilidade de Portugal reivindicar territórios situados a leste da linha estabelecida pelo tratado.",
+                    "A transferência de todas as terras americanas para o domínio espanhol.",
+                    "A proibição da ocupação portuguesa do território americano."
+                ],
+                correta: 1
+            },
+            {
+                id: 4,
+                titulo: "Chegada dos portugueses ao Brasil",
+                pergunta: "A chegada da expedição portuguesa comandada por Pedro Álvares Cabral ocorreu em:",
+                alternativas: [
+                    "1450, durante o início das Grandes Navegações.",
+                    "1494, imediatamente após a assinatura do Tratado de Tordesilhas.",
+                    "1500, no contexto da expansão marítima portuguesa.",
+                    "1535, quando teve início a colonização efetiva do território."
+                ],
+                correta: 2
+            },
+            {
+                id: 5,
+                titulo: "Lei Áurea",
+                pergunta: "A Lei Áurea, assinada em 1888, aboliu legalmente a escravidão no Brasil. Entretanto, considerar a lei como responsável por solucionar completamente os problemas enfrentados pela população negra seria equivocado porque:",
+                alternativas: [
+                    "A escravidão retornou oficialmente poucos anos depois.",
+                    "A abolição não foi acompanhada de políticas amplas de inclusão social, econômica e acesso à terra para os libertos.",
+                    "A lei libertou apenas os escravizados que trabalhavam nas cidades.",
+                    "A população escravizada permaneceu legalmente propriedade dos antigos senhores até a Proclamação da República."
+                ],
+                correta: 1
+            },
+            {
+                id: 6,
+                titulo: "Brasil após a Ditadura Militar",
+                pergunta: "Observe a sequência política: Ditadura Militar → abertura política → eleição de Tancredo Neves → governo Sarney → eleições presidenciais diretas de 1989. Com base nessa sequência, quem foi o primeiro presidente eleito diretamente pela população após o regime militar?",
+                alternativas: [
+                    "José Sarney",
+                    "Tancredo Neves",
+                    "Fernando Collor",
+                    "Emílio Médici"
+                ],
+                correta: 2
+            },
+            {
+                id: 7,
+                titulo: "Antigo Egito",
+                pergunta: "O desenvolvimento da civilização egípcia esteve profundamente relacionado ao ambiente natural. O rio Nilo teve importância fundamental porque:",
+                alternativas: [
+                    "Impedia o desenvolvimento da agricultura ao provocar secas permanentes.",
+                    "Fornecia água, possibilitava a agricultura e contribuía para o transporte e a comunicação.",
+                    "Funcionava exclusivamente como uma fronteira militar contra os povos asiáticos.",
+                    "Era utilizado apenas para atividades religiosas, sem importância econômica."
+                ],
+                correta: 1
+            },
+            {
+                id: 8,
+                titulo: "Revolução Industrial",
+                pergunta: "A Revolução Industrial iniciou-se principalmente na Inglaterra durante o século XVIII. Um fator que favoreceu esse pioneirismo inglês foi:",
+                alternativas: [
+                    "A inexistência de recursos minerais no território inglês.",
+                    "A combinação entre disponibilidade de carvão, capitais, mercados consumidores e transformações agrícolas.",
+                    "A predominância de uma economia exclusivamente agrícola e sem comércio externo.",
+                    "A proibição do uso de máquinas nas manufaturas inglesas."
+                ],
+                correta: 1
+            },
+            {
+                id: 9,
+                titulo: "Revolução Industrial — interpretação",
+                pergunta: "Imagine uma sociedade em que a produção antes realizada por artesãos passa progressivamente a ocorrer em grandes estabelecimentos, utilizando máquinas movidas inicialmente por fontes de energia como o carvão. Essa transformação está diretamente relacionada:",
+                alternativas: [
+                    "À Revolução Neolítica.",
+                    "À Revolução Francesa.",
+                    "À Revolução Industrial.",
+                    "À queda do Império Romano."
+                ],
+                correta: 2
+            },
+            {
+                id: 10,
+                titulo: "Segunda Guerra Mundial",
+                pergunta: "Em setembro de 1939, a Alemanha invadiu a Polônia. Esse acontecimento provocou a declaração de guerra de França e Reino Unido à Alemanha e é tradicionalmente considerado o marco inicial da Segunda Guerra Mundial. A invasão estava relacionada principalmente:",
+                alternativas: [
+                    "À política expansionista e militarista do regime nazista.",
+                    "À tentativa alemã de restaurar a democracia na Polônia.",
+                    "À expansão do comunismo soviético sobre a Europa Ocidental.",
+                    "À disputa colonial entre Alemanha e Japão na América."
+                ],
+                correta: 0
+            },
+            {
+                id: 11,
+                titulo: "Martin Luther King Jr.",
+                pergunta: "O movimento pelos direitos civis nos Estados Unidos, especialmente durante as décadas de 1950 e 1960, enfrentou leis e práticas de segregação racial. Martin Luther King Jr. tornou-se uma das principais lideranças desse movimento por defender:",
+                alternativas: [
+                    "A segregação racial como forma de preservar a identidade cultural.",
+                    "A resistência armada como principal estratégia política.",
+                    "A igualdade racial e a resistência não violenta.",
+                    "A separação definitiva entre os estados do norte e do sul."
+                ],
+                correta: 2
+            },
+            {
+                id: 12,
+                titulo: '"I Have a Dream"',
+                pergunta: 'O famoso discurso "I Have a Dream", proferido em 1963, expressava uma visão de sociedade baseada:',
+                alternativas: [
+                    "Na manutenção das diferenças jurídicas entre negros e brancos.",
+                    "Na igualdade de direitos e na superação da discriminação racial.",
+                    "Na expansão territorial dos Estados Unidos.",
+                    "Na defesa da monarquia norte-americana."
+                ],
+                correta: 1
+            },
+            {
+                id: 13,
+                titulo: "Artefatos arqueológicos",
+                pergunta: "Um pesquisador encontra uma ferramenta de pedra que apresenta marcas de fabricação e uso humano. Para a arqueologia, esse objeto é especialmente relevante porque:",
+                alternativas: [
+                    "É necessariamente um fóssil biológico.",
+                    "Pode constituir um artefato e fornecer informações sobre práticas e tecnologias de grupos humanos do passado.",
+                    "Só pode ser estudado caso tenha sido encontrado dentro de um museu.",
+                    "Não possui valor histórico por não ser um documento escrito."
+                ],
+                correta: 1
+            },
+            {
+                id: 14,
+                titulo: "Sítio arqueológico",
+                pergunta: "Um local apresenta restos de construções, ferramentas, cerâmicas e outros vestígios associados à ocupação humana antiga. Esse local pode ser classificado como:",
+                alternativas: [
+                    "Sítio arqueológico.",
+                    "Reserva paleontológica exclusivamente animal.",
+                    "Museu histórico necessariamente construído na atualidade.",
+                    "Área geológica sem relação com atividades humanas."
+                ],
+                correta: 0
+            },
+            {
+                id: 15,
+                titulo: "Datação arqueológica",
+                pergunta: "Um arqueólogo precisa determinar aproximadamente quando determinado vestígio foi produzido. Para isso, utiliza métodos de datação. A principal finalidade desses métodos é:",
+                alternativas: [
+                    "Restaurar fisicamente os objetos encontrados.",
+                    "Determinar ou estimar a idade dos vestígios arqueológicos.",
+                    "Identificar automaticamente quem produziu determinado artefato.",
+                    "Transformar objetos antigos em réplicas modernas."
+                ],
+                correta: 1
+            },
+            {
+                id: 16,
+                titulo: "Datação por radiocarbono",
+                pergunta: "Um pesquisador encontra restos orgânicos provenientes de uma antiga ocupação humana. Para estimar sua idade, pode utilizar o carbono-14, especialmente adequado para materiais orgânicos relativamente recentes em termos arqueológicos. Isso ocorre porque:",
+                alternativas: [
+                    "O carbono-14 aumenta indefinidamente nos organismos após sua morte.",
+                    "A quantidade de carbono-14 diminui de maneira previsível após a morte do organismo.",
+                    "O carbono-14 existe apenas em objetos produzidos artificialmente.",
+                    "O carbono-14 permite determinar diretamente a identidade do indivíduo."
+                ],
+                correta: 1
+            },
+            {
+                id: 17,
+                titulo: "Machu Picchu",
+                pergunta: "Machu Picchu é um importante sítio arqueológico localizado nos Andes. Sua construção e ocupação estão associadas principalmente:",
+                alternativas: [
+                    "Aos egípcios.",
+                    "Aos romanos.",
+                    "Aos incas.",
+                    "Aos maias."
+                ],
+                correta: 2
+            },
+            {
+                id: 18,
+                titulo: "Civilizações americanas",
+                pergunta: "A existência de construções monumentais como Machu Picchu demonstra que as sociedades americanas pré-colombianas:",
+                alternativas: [
+                    "Não desenvolveram sistemas complexos de organização social e engenharia.",
+                    "Dependiam exclusivamente de tecnologias europeias para construir grandes estruturas.",
+                    "Desenvolveram conhecimentos próprios de engenharia, agricultura, arquitetura e organização social.",
+                    "Surgiram somente depois da chegada dos portugueses à América."
+                ],
+                correta: 2
+            },
+            {
+                id: 19,
+                titulo: "Pompeia",
+                pergunta: "A cidade de Pompeia tornou-se um dos sítios arqueológicos mais importantes da Antiguidade porque:",
+                alternativas: [
+                    "Foi soterrada durante a erupção do Vesúvio, preservando numerosos vestígios da vida cotidiana romana.",
+                    "Foi construída pelos incas e posteriormente conquistada pelos romanos.",
+                    "Permaneceu completamente intacta durante a Idade Média.",
+                    "Foi construída especificamente para funcionar como centro arqueológico."
+                ],
+                correta: 0
+            },
+            {
+                id: 20,
+                titulo: "Pompeia — interpretação",
+                pergunta: "A preservação de casas, pinturas, objetos e outros vestígios em Pompeia permite aos pesquisadores estudar não apenas grandes acontecimentos políticos, mas também:",
+                alternativas: [
+                    "Aspectos da vida cotidiana, dos costumes e da organização social romana.",
+                    "Exclusivamente as técnicas militares utilizadas pelos romanos.",
+                    "Apenas a religião egípcia durante o período romano.",
+                    "A formação dos primeiros Estados americanos."
+                ],
+                correta: 0
+            },
+            {
+                id: 21,
+                titulo: "Cronologia",
+                pergunta: "Assinale a alternativa que apresenta os acontecimentos em ordem cronológica correta:",
+                alternativas: [
+                    "Tratado de Tordesilhas → chegada dos portugueses ao Brasil → Revolução Industrial → Lei Áurea.",
+                    "Chegada dos portugueses → Tratado de Tordesilhas → Lei Áurea → Revolução Industrial.",
+                    "Revolução Industrial → Tratado de Tordesilhas → chegada dos portugueses → Lei Áurea.",
+                    "Lei Áurea → Revolução Industrial → Tratado de Tordesilhas → chegada dos portugueses."
+                ],
+                correta: 0
+            },
+            {
+                id: 22,
+                titulo: "Relação entre os temas",
+                pergunta: "Embora pertençam a períodos históricos muito diferentes, as Grandes Navegações e a Revolução Industrial contribuíram para transformações econômicas profundas. Uma relação possível entre esses processos é:",
+                alternativas: [
+                    "Ambos contribuíram para ampliar mercados e transformar as formas de produção e circulação de riquezas.",
+                    "Ambos eliminaram imediatamente as desigualdades sociais na Europa.",
+                    "Ambos ocorreram exclusivamente por razões religiosas.",
+                    "Ambos reduziram a importância do comércio internacional."
+                ],
+                correta: 0
+            },
+            {
+                id: 23,
+                titulo: "Arqueologia e interpretação histórica",
+                pergunta: "Um artefato isolado encontrado durante uma escavação possui informações limitadas. Para compreender melhor seu significado histórico, o arqueólogo deve considerar também:",
+                alternativas: [
+                    "Apenas o valor monetário do objeto.",
+                    "O contexto arqueológico, incluindo sua localização, associação com outros vestígios e características do sítio.",
+                    "Somente sua aparência atual.",
+                    "Apenas relatos históricos produzidos na Europa."
+                ],
+                correta: 1
+            },
+            {
+                id: 24,
+                titulo: "Questão integradora",
+                pergunta: "Considere as afirmações: I. O Nilo favoreceu o desenvolvimento da agricultura egípcia. II. A agricultura contribuiu para a formação de sociedades organizadas e complexas. III. A existência de grandes obras arquitetônicas demonstra capacidade de organização e domínio técnico. A alternativa correta é:",
+                alternativas: [
+                    "Apenas I é verdadeira.",
+                    "Apenas II é verdadeira.",
+                    "I, II e III são verdadeiras.",
+                    "Apenas I e III são verdadeiras."
+                ],
+                correta: 2
+            },
+            {
+                id: 25,
+                titulo: "Questão de associação histórica",
+                pergunta: "Associe corretamente os acontecimentos aos seus respectivos contextos: 1. Queda da Bastilha, 2. I Have a Dream, 3. Lei Áurea, 4. Invasão da Polônia. ( ) Segunda Guerra Mundial, ( ) Movimento pelos direitos civis nos EUA, ( ) Revolução Francesa, ( ) Abolição da escravidão no Brasil. A sequência correta é:",
+                alternativas: [
+                    "4 – 2 – 1 – 3",
+                    "1 – 3 – 4 – 2",
+                    "4 – 1 – 2 – 3",
+                    "2 – 4 – 1 – 3"
+                ],
+                correta: 0
+            }];
+
+let questaoAtual = 0;
+let respostas = Array(questoes.length).fill(null);
+let respondida = false;
+
+function renderQuestao() {
+  const q = questoes[questaoAtual];
+  const progresso = Math.round(((questaoAtual + 1) / questoes.length) * 100);
+
+  document.getElementById("progressText").textContent =
+    `Questão ${questaoAtual + 1} de ${questoes.length}`;
+  document.getElementById("progressPercent").textContent = `${progresso}%`;
+  document.getElementById("progressBar").style.width = `${progresso}%`;
+
+  document.getElementById("quizArea").innerHTML = `
+    <div class="bg-white border border-ifsp-borda rounded-[18px] shadow-sm p-6 md:p-8">
+      <div class="flex flex-wrap gap-2 mb-4">
+        <span class="inline-block bg-[#eaf4ee] text-ifsp-verde text-xs font-bold px-4 py-1.5 rounded-full">${q.titulo}:</span>
+        <span class="inline-block bg-[#f7eddc] text-[#6b4b0a] text-xs font-bold px-3 py-1.5 rounded-full">Escolha uma resposta</span>
+      </div>
+
+      <h2 class="text-xl md:text-2xl font-extrabold text-ifsp-escuro leading-tight mb-7">${q.pergunta}</h2>
+
+      <div class="space-y-3">
+        ${q.alternativas.map((alt, idx) => `
+          <button type="button"
+            class="quiz-option w-full text-left p-4 border-2 border-ifsp-borda rounded-xl bg-white flex gap-3 items-start"
+            onclick="selecionarResposta(${idx})">
+            <span class="flex-shrink-10 w-8 h-100 rounded-full bg-ifsp-suave text-ifsp-verde font-extrabold flex items-center justify-center">
+              ${String.fromCharCode(65 + idx)}
+            </span>
+            <span class="pt-1 text-sm md:text-base">${alt}</span>
+          </button>
+        `).join("")}
+      </div>
+
+      <div id="feedback" class="mt-5 hidden"></div>
+      
+      <br>
+
+      <button id="nextButton" type="button"
+        class="hidden mt-6 w-full bg-ifsp-verde hover:bg-ifsp-escuro text-white font-bold py-3.5 px-6 rounded-xl transition"
+        onclick="proximaQuestao()">
+        ${questaoAtual === questoes.length - 1 ? "Ver resultado" : "Próxima questão"}
+      </button>
+    </div>
+  `;
+
+  respondida = false;
+}
+
+function selecionarResposta(idx) {
+  if (respondida) return;
+
+  const q = questoes[questaoAtual];
+  respostas[questaoAtual] = idx;
+  respondida = true;
+
+  const botoes = document.querySelectorAll(".quiz-option");
+  botoes.forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === q.correta) btn.classList.add("correct");
+    if (i === idx && idx !== q.correta) btn.classList.add("wrong");
+  });
+
+  const feedback = document.getElementById("feedback");
+
+  if (idx === q.correta) {
+    feedback.innerHTML = `
+      <div class="border border-[#198754] bg-[#ecfdf3] rounded-xl p-4 text-[#146c43]">
+        <strong>Resposta correta!</strong>
+        <p class="mt-1 text-sm">Você acertou esta questão.</p>
+      </div>`;
+  } else {
+    feedback.innerHTML = `
+      <div class="border border-[#dc3545] bg-[#fff1f2] rounded-xl p-4 text-[#b02a37]">
+        <strong>Resposta incorreta.</strong>
+        <p class="mt-1 text-sm">A resposta correta é: <strong>${q.alternativas[q.correta]}</strong></p>
+      </div>`;
+  }
+
+  feedback.classList.remove("hidden");
+  document.getElementById("nextButton").classList.remove("hidden");
+}
+
+function proximaQuestao() {
+  if (!respondida) return;
+
+  if (questaoAtual < questoes.length - 1) {
+    questaoAtual++;
+    renderQuestao();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else {
+    mostrarResultado();
+  }
+}
+
+function mostrarResultado() {
+  const acertos = respostas.reduce((total, resposta, i) =>
+    total + (resposta === questoes[i].correta ? 1 : 0), 0);
+
+  const percentual = Math.round((acertos / questoes.length) * 100);
+
+  let mensagem = "";
+  if (percentual >= 90) mensagem = "Excelente desempenho!";
+  else if (percentual >= 70) mensagem = "Muito bom! Você mostrou um bom domínio dos temas.";
+  else if (percentual >= 50) mensagem = "Bom começo! Algumas questões podem ser uma oportunidade para revisar.";
+  else mensagem = "Vale revisar os conteúdos e tentar novamente.";
+
+  document.getElementById("quizArea").classList.add("hidden");
+  document.getElementById("resultArea").classList.remove("hidden");
+
+  document.getElementById("progressText").textContent = "Quiz concluído";
+  document.getElementById("progressPercent").textContent = "100%";
+  document.getElementById("progressBar").style.width = "100%";
+
+  document.getElementById("resultArea").innerHTML = `
+    <div class="bg-white border border-ifsp-borda rounded-[18px] shadow-sm p-7 md:p-10 text-center">
+      <span class="inline-block bg-[#f7eddc] text-[#6b4b0a] text-xs font-bold px-3 py-1.5 rounded-full mb-4">RESULTADO</span>
+      <h2 class="text-3xl font-extrabold text-ifsp-escuro mb-6">Quiz finalizado!</h2>
+
+      <div class="bg-[#edf6f0] border border-[#b9d8c5] rounded-2xl p-7 mb-6">
+        <p class="text-6xl font-extrabold text-ifsp-verde">${acertos}/${questoes.length}</p>
+        <p class="text-2xl font-bold text-ifsp-escuro mt-2">${percentual}%</p>
+      </div>
+
+      <p class="text-ifsp-textoSuave mb-7">${mensagem}</p>
+
+      <div class="flex flex-col sm:flex-row gap-3">
+        <button onclick="reiniciarQuiz()"
+          class="flex-1 bg-ifsp-verde hover:bg-ifsp-escuro text-white font-bold py-3.5 px-6 rounded-xl transition">
+          Fazer novamente
+        </button>
+        <a href="index.html#quizzes"
+          class="flex-1 border-2 border-ifsp-verde text-ifsp-verde hover:bg-[#edf6f0] font-bold py-3.5 px-6 rounded-xl no-underline transition">
+          Voltar aos quizzes
+        </a>
+      </div>
+    </div>
+  `;
+}
+
+function reiniciarQuiz() {
+  questaoAtual = 0;
+  respostas = Array(questoes.length).fill(null);
+  document.getElementById("resultArea").classList.add("hidden");
+  document.getElementById("quizArea").classList.remove("hidden");
+  renderQuestao();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+renderQuestao();
+</script>
+</body>
+</html>
